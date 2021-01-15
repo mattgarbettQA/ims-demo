@@ -4,7 +4,7 @@ public class Item {
 	
 	private Long id;
 	private String itemName;
-	private double price;
+	private Double price;
 
 	public Item(Long id, String itemName, Double price) {
 		this.id = id;
@@ -17,7 +17,6 @@ public class Item {
 		this.price = price;
 	}
 	
-
 	public Long getId() {
 		return id;
 	}
@@ -52,7 +51,7 @@ public class Item {
 		int result = 1;
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-//		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		return result;
 	}
 
@@ -75,11 +74,11 @@ public class Item {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-//		if (price == null) {
-//			if (other.price != null)
-//				return false;
-//		} else if (!price.equals(other.price))
-//			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
 		return true;
 	}
 

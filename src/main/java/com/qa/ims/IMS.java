@@ -44,7 +44,7 @@ public class IMS {
 				doAction(customerController, action);
 				break;
 			case ITEM:
-				Item itemController = new ItemController(new ItemService(new ItemDaoMysql()));
+				ItemController itemController = new ItemController(new ItemServices(new ItemDaoMysql()));
 				doAction(itemController, action);
 				break;
 			case ORDER:
