@@ -1,28 +1,32 @@
 package com.qa.ims.persistence.domain;
 
-import java.util.Date;
-
 public class Order {
 
 	private Long id;
 	private Long orderitems_id;
 	private Long customer_id;
 	private Long item_id;
-	private Date date_ordered;
+	private String date_ordered;
 
-	public Order(Long orderitems_id, Long customer_id, Long item_id, Date date_ordered) {
+	public Order(Long customer_id, Long item_id, String date_ordered) {
+		this.customer_id = customer_id;
+		this.item_id = item_id;
+		this.date_ordered = date_ordered;
+	}
+
+	public Order(Long orderitems_id, Long customer_id, Long item_id, String date_ordered) {
 		this.orderitems_id = orderitems_id;
 		this.customer_id = customer_id;
 		this.item_id = item_id;
 		this.date_ordered = date_ordered;
 	}
 
-	public Order(Long id, Long orderitems_id, Long customer_id, Long item_id, Date date_ordered) {
+	public Order(Long id, Long orderitems_id, Long customer_id, Long item_id, String date) {
 		this.id = id;
 		this.orderitems_id = orderitems_id;
 		this.customer_id = customer_id;
 		this.item_id = item_id;
-		this.date_ordered = date_ordered;
+		this.date_ordered = date;
 	}
 
 	public Long getId() {
@@ -57,14 +61,14 @@ public class Order {
 		this.item_id = item_id;
 	}
 
-	public Date getDate_ordered() {
+	public String getDate_ordered() {
 		return date_ordered;
 	}
 
-	public void setDate_ordered(Date date_ordered) {
+	public void setDate_ordered(String date_ordered) {
 		this.date_ordered = date_ordered;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Order [order_id= " + id + ", customer_id= " + customer_id + ", item_id= " + item_id + ", date_ordered= "
