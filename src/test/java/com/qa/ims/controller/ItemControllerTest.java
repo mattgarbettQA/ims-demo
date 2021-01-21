@@ -44,30 +44,30 @@ public class ItemControllerTest {
 		assertEquals(items, itemController.readAll());
 	}
 
-//	@Test
-//	public void createTest() {
-//		String itemName = "Apple";
-//		Double price = 1.55;
-//		Mockito.doReturn(itemName, price).when(itemController).getInput();
-//		Item item = new Item(itemName, price);
-//		Item savedItem = new Item(1L, "Apple", 1.55);
-//		Mockito.when(itemServices.create(item)).thenReturn(savedItem);
-//		assertEquals(savedItem, itemController.create());
-//	}
+	@Test
+	public void createTest() {
+		String itemName = "Apple";
+		String price = "1.55";
+		Mockito.doReturn(itemName, price).when(itemController).getInput();
+		Item item = new Item(itemName, 1.55);
+		Item savedItem = new Item(1L, "Apple", 1.55);
+		Mockito.when(itemServices.create(item)).thenReturn(savedItem);
+		assertEquals(savedItem, itemController.create());
+	}
 
 	/**
 	 * 
 	 */
-//	@Test
-//	public void updateTest() {
-//		String id = "1";
-//		String itemName = "Orange";
-//		Double price = 2.99;
-//		Mockito.doReturn(id, itemName, price).when(itemController).getInput();
-//		Item item = new Item(1L, itemName, price);
-//		Mockito.when(itemServices.update(item)).thenReturn(item);
-//		assertEquals(item, itemController.update());
-//	}
+	@Test
+	public void updateTest() {
+		String id = "1";
+		String itemName = "Orange";
+		String price = "2.99";
+		Mockito.doReturn(id, itemName, price).when(itemController).getInput();
+		Item item = new Item(1L, itemName, 2.99);
+		Mockito.when(itemServices.update(item)).thenReturn(item);
+		assertEquals(item, itemController.update());
+	}
 	
 
 	/**
