@@ -22,12 +22,12 @@ public class OrderDaoMysql implements Dao<Order> {
 		return new Order(id);
 	}
 
-	public Order modelOrderFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("order_id");
-		Long customer_id = resultSet.getLong("customer_id");
-		String date = resultSet.getString("order_date");
-		return new Order(id, customer_id, date);
-	}
+//	public Order modelOrderFromResultSet(ResultSet resultSet) throws SQLException {
+//		Long id = resultSet.getLong("order_id");
+//		Long customer_id = resultSet.getLong("customer_id");
+//		String date = resultSet.getString("order_date");
+//		return new Order(id, customer_id, date);
+//	}
 
 	@Override
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
@@ -36,8 +36,9 @@ public class OrderDaoMysql implements Dao<Order> {
 		Long customer_id = resultSet.getLong("customer_id");
 		Long item_id = resultSet.getLong("item_id");
 		String date = resultSet.getString("date_ordered");
-		return new Order(id, orderitems_id, customer_id, item_id, date);
-
+		Double total_price = resultSet.getDouble("total_price");
+		int quantity = resultSet.getInt("quantity");
+		return new Order(id, orderitems_id, customer_id, item_id, date).total_price(total_price).quantity(quantity);
 	}
 
 	/**
@@ -76,20 +77,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		}
 		return null;
 	}
-
-	public Order readLatestOrder() {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");) {
-			resultSet.next();
-			return modelOrderFromResultSet(resultSet);
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}
-
+	
 	public Long readLatestOrderID() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
@@ -117,21 +105,16 @@ public class OrderDaoMysql implements Dao<Order> {
 					+ "','" + order.getDate_ordered() + "')");
 			List<Long> items_id = new ArrayList<Long>();
 			items_id = order.getItems_id();
+			List<Integer> quantity = new ArrayList<Integer>();
+			quantity = order.getQuantitems();
+			int k =0;
 			for (Long i : items_id) {
 				statement.executeUpdate(
-						"INSERT INTO ordersItems(order_id, item_id) values('" + readLatestOrderID() + "','" + i + "')");
+						"INSERT INTO orderItems(order_id, item_id) values('" + readLatestOrderID() + "','" + i + "','" + quantity.get(k) + "')"); k++;
 			}
-			return readLatest();
-		} catch (Exception e) {
-			LOGGER.debug(e.getStackTrace());
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}
-
-	public Order createOrderItem(Order order) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();) {
+			
+			statement.executeUpdate(
+					"update orders set total_price ='" + calcTotalPrice() + "' where order_id =" + readLatestOrderID());
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -144,8 +127,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(
-						"SELECT * FROM orders o JOIN orderItems oi ON o.order_id=oi.orderitems_id where order_id = "
-								+ id);) {
+						"SELECT * FROM orders o JOIN orderItems oi ON o.order_id=oi.orderitems_id where order_id = "+ id);) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -161,8 +143,30 @@ public class OrderDaoMysql implements Dao<Order> {
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update orders set customer_id ='" + order.getCustomer_id() + "', order_date ='"
 					+ order.getDate_ordered() + "' where order_id =" + order.getId());
+			List<Long> items_id = new ArrayList<Long>();
+			items_id = order.getItems_id();
+			List<Integer> quantity = new ArrayList<Integer>();
+			quantity = order.getQuantitems();
+			boolean updateAddItems = order.getUpdateAddItems();
+			boolean updateDeleteItems = order.getUpdateDeleteItems();
+			List<Long> itemsDelete = new ArrayList<Long>();
+			itemsDelete = order.getItems_id_delete();
+			if (updateDeleteItems) {
+				//int j = 0;
+				for (Long i : itemsDelete) {
+					statement.executeUpdate("delete from orderItems where item_id = " + i);
+				}
+			}
+			if (updateAddItems) {
+				int k = 0;
+				for (Long i : items_id) {
+					statement.executeUpdate("INSERT INTO orderItems(order_id, item_id, quantity) values('"	+ order.getId() + "','" + i + "','" + quantity.get(k) + "')");
+					k++;
+				}
+			}
+
 			statement.executeUpdate(
-					"update orderItems set item_id ='" + order.getItem_id() + "' where order_id =" + order.getId());
+					"update orders set total_price ='" + updateTotalPrice(order) + "' where order_id =" + order.getId());
 			return readOrder(order.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -181,6 +185,35 @@ public class OrderDaoMysql implements Dao<Order> {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
+		
+	}
+		
+	public Double calcTotalPrice() {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT SUM(price*quantity) AS total FROM items i JOIN orderItems oi ON i.item_id=oi.item_id WHERE order_id="+readLatestOrderID());) {
+			resultSet.next();
+			return  resultSet.getDouble("total");
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+	
+	public Double updateTotalPrice(Order order) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery(
+						"SELECT SUM(price*quantity) AS total FROM items i JOIN orderItems oi ON i.item_id=oi.item_id WHERE order_id="
+								+ order.getId());) {
+			resultSet.next();
+			return resultSet.getDouble("total");
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
 	}
 
 }
