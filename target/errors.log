@@ -1,64 +1,138 @@
-20210122 12:22:48 INFO  [main] ims.IMS IMS.java26 - What is your username
-20210122 12:22:49 INFO  [main] ims.IMS IMS.java28 - What is your password
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.open0(Native Method)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileReader.<init>(FileReader.java:60)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.utils.DBUtils.<init>(DBUtils.java:30)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.utils.DBUtils.getInstance(DBUtils.java:52)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.IMS.imsSystem(IMS.java:31)
-20210122 12:22:51 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.Runner.main(Runner.java:12)
-20210122 12:22:51 ERROR [main] utils.DBUtils DBUtils.java41 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
-20210122 12:22:51 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
-20210122 12:22:51 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210122 12:22:51 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210122 12:22:51 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210122 12:22:51 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210122 12:22:57 INFO  [main] ims.IMS IMS.java43 - What would you like to do with customer:
-20210122 12:22:57 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
-20210122 12:22:57 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
-20210122 12:22:57 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
-20210122 12:22:57 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
-20210122 12:22:57 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20210122 12:23:00 INFO  [main] controller.CustomerController CustomerController.java37 - id:1 first name:matt surname:garbett
-20210122 12:23:00 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
-20210122 12:23:00 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210122 12:23:00 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210122 12:23:00 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210122 12:23:00 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210122 12:23:07 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
-20210122 12:23:07 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
-20210122 12:23:07 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
-20210122 12:23:07 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
-20210122 12:23:07 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
-20210122 12:23:07 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20210122 12:25:15 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
-20210122 12:25:15 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210122 12:25:15 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210122 12:25:15 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210122 12:25:15 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210122 12:25:20 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
-20210122 12:25:20 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
-20210122 12:25:20 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
-20210122 12:25:20 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
-20210122 12:25:20 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
-20210122 12:25:20 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20210122 12:25:21 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
-20210122 12:25:21 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210122 12:25:21 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210122 12:25:21 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210122 12:25:21 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210122 12:25:28 INFO  [main] ims.IMS IMS.java50 - What would you like to do with item:
-20210122 12:25:28 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
-20210122 12:25:28 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
-20210122 12:25:28 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
-20210122 12:25:28 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
-20210122 12:25:28 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20210122 12:25:32 INFO  [main] controller.ItemController ItemController.java33 - id:1 item name:orange price: £1.99
-20210122 12:25:32 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
-20210122 12:25:32 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210122 12:25:32 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210122 12:25:32 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210122 12:25:32 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210122 13:24:42 INFO  [main] ims.IMS IMS.java69 - SO LONG!
+20210122 14:06:55 INFO  [main] ims.IMS IMS.java26 - What is your username
+20210122 14:07:09 INFO  [main] ims.IMS IMS.java28 - What is your password
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.open0(Native Method)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - java.base/java.io.FileReader.<init>(FileReader.java:60)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.utils.DBUtils.<init>(DBUtils.java:30)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.utils.DBUtils.getInstance(DBUtils.java:52)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.IMS.imsSystem(IMS.java:31)
+20210122 14:07:12 DEBUG [main] utils.DBUtils DBUtils.java39 - com.qa.ims.Runner.main(Runner.java:12)
+20210122 14:07:12 ERROR [main] utils.DBUtils DBUtils.java41 - src\main\resources\sql-schema.sql (The system cannot find the path specified)
+20210122 14:07:12 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:07:12 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:07:12 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:07:12 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:07:12 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:07:27 INFO  [main] ims.IMS IMS.java50 - What would you like to do with item:
+20210122 14:07:27 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:07:27 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:07:27 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:07:27 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:07:27 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:07:31 INFO  [main] controller.ItemController ItemController.java43 - Please enter the item name
+20210122 14:07:35 INFO  [main] controller.ItemController ItemController.java45 - Please enter the price
+20210122 14:07:43 INFO  [main] controller.ItemController ItemController.java48 - Item created
+20210122 14:07:43 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:07:43 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:07:43 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:07:43 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:07:43 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:07:51 INFO  [main] ims.IMS IMS.java50 - What would you like to do with item:
+20210122 14:07:51 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:07:51 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:07:51 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:07:51 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:07:51 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:07:54 INFO  [main] controller.ItemController ItemController.java33 - id:1 item name:orange price: £1.99
+20210122 14:07:54 INFO  [main] controller.ItemController ItemController.java33 - id:2 item name:orange price: £2.99
+20210122 14:07:54 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:07:54 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:07:54 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:07:54 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:07:54 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:08:06 ERROR [main] domain.Domain Domain.java38 - Invalid selection please try again
+20210122 14:08:10 INFO  [main] ims.IMS IMS.java50 - What would you like to do with item:
+20210122 14:08:10 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:08:10 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:08:10 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:08:10 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:08:10 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:08:12 INFO  [main] controller.ItemController ItemController.java57 - Please enter the id of the item you would like to update
+20210122 14:08:19 INFO  [main] controller.ItemController ItemController.java59 - Please enter an item name
+20210122 14:08:31 INFO  [main] controller.ItemController ItemController.java61 - Please enter a price
+20210122 14:08:38 INFO  [main] controller.ItemController ItemController.java64 - Item Updated
+20210122 14:08:38 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:08:38 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:08:38 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:08:38 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:08:38 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:08:45 INFO  [main] ims.IMS IMS.java50 - What would you like to do with item:
+20210122 14:08:45 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:08:45 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:08:45 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:08:45 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:08:45 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:08:49 INFO  [main] controller.ItemController ItemController.java73 - Please enter the id of the item you would like to delete
+20210122 14:08:58 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:08:58 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:08:58 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:08:58 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:08:58 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:09:10 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
+20210122 14:09:10 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:09:10 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:09:10 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:09:10 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:09:10 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:09:16 INFO  [main] controller.OrderController OrderController.java51 - Please enter the customer id
+20210122 14:09:23 INFO  [main] controller.OrderController OrderController.java53 - Please enter the item id
+20210122 14:09:27 INFO  [main] controller.OrderController OrderController.java55 - Please enter the quantity
+20210122 14:09:30 INFO  [main] controller.OrderController OrderController.java58 - Would you like to add more items? type y/n
+20210122 14:09:36 INFO  [main] controller.OrderController OrderController.java61 - Please enter the item id
+20210122 14:09:38 INFO  [main] controller.OrderController OrderController.java63 - Please enter the quantity
+20210122 14:09:40 INFO  [main] controller.OrderController OrderController.java58 - Would you like to add more items? type y/n
+20210122 14:09:43 INFO  [main] controller.OrderController OrderController.java71 - Please enter the date
+20210122 14:09:48 DEBUG [main] dao.OrderDaoMysql OrderDaoMysql.java108 - [Ljava.lang.StackTraceElement;@2f6e28bc
+20210122 14:09:48 ERROR [main] dao.OrderDaoMysql OrderDaoMysql.java109 - Column count doesn't match value count at row 1
+20210122 14:09:48 INFO  [main] controller.OrderController OrderController.java74 - -Order created-
+20210122 14:09:48 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:09:48 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:09:48 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:09:48 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:09:48 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:09:58 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
+20210122 14:09:58 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:09:58 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:09:58 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:09:58 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:09:58 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:10:05 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:10:05 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:10:05 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:10:05 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:10:05 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:10:08 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
+20210122 14:10:08 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:10:08 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:10:08 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:10:08 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:10:08 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:10:19 INFO  [main] controller.OrderController OrderController.java91 - Please enter the id of the order you would like to update
+20210122 14:10:23 INFO  [main] controller.OrderController OrderController.java93 - Please enter the customer id
+20210122 14:10:26 INFO  [main] controller.OrderController OrderController.java96 - Would you like to delete items? y/n
+20210122 14:10:33 INFO  [main] controller.OrderController OrderController.java110 - Would you like to add items? y/n
+20210122 14:10:36 INFO  [main] controller.OrderController OrderController.java124 - Please enter the date
+20210122 14:10:45 DEBUG [main] dao.OrderDaoMysql OrderDaoMysql.java159 - [Ljava.lang.StackTraceElement;@62f68dff
+20210122 14:10:45 ERROR [main] dao.OrderDaoMysql OrderDaoMysql.java160 - Unknown column 'order_date' in 'field list'
+20210122 14:10:45 INFO  [main] controller.OrderController OrderController.java127 - Order Updated
+20210122 14:10:45 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:10:45 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:10:45 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:10:45 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:10:45 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:10:51 INFO  [main] ims.IMS IMS.java57 - What would you like to do with order:
+20210122 14:10:51 INFO  [main] controller.Action Action.java38 - CREATE: To save a new item into the database
+20210122 14:10:51 INFO  [main] controller.Action Action.java38 - READ: To read an item from the database
+20210122 14:10:51 INFO  [main] controller.Action Action.java38 - UPDATE: To change an item already in the database
+20210122 14:10:51 INFO  [main] controller.Action Action.java38 - DELETE: To remove an item from the database
+20210122 14:10:51 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20210122 14:10:55 INFO  [main] controller.OrderController OrderController.java136 - Please enter the id of the order you would like to delete
+20210122 14:10:57 INFO  [main] controller.OrderController OrderController.java139 - Order Deleted
+20210122 14:10:57 INFO  [main] ims.IMS IMS.java35 - Which entity would you like to use?
+20210122 14:10:57 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210122 14:10:57 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210122 14:10:57 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210122 14:10:57 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210122 14:11:11 INFO  [main] ims.IMS IMS.java69 - SO LONG!
