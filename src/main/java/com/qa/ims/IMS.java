@@ -2,6 +2,7 @@ package com.qa.ims;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import com.qa.ims.controller.Action;
 import com.qa.ims.controller.CrudController;
 import com.qa.ims.controller.CustomerController;
@@ -27,7 +28,8 @@ public class IMS {
 		LOGGER.info("What is your password");
 		String password = Utils.getInstance().getInput();
 
-		DBUtils.getInstance(username, password, "jdbc:mysql://localhost:3306/ims", false);
+		DBUtils.getInstance(username, password, "jdbc:mysql://localhost:3306/ims", false); //this one for connecting to local 
+		//DBUtils.getInstance(username, password, "jdbc:mysql://MYGCP3306/ims", false); // for connecting to GCP
 		boolean stop = false;
 		while (!stop) {
 			LOGGER.info("Which entity would you like to use?");
@@ -37,8 +39,7 @@ public class IMS {
 
 			switch (domain) {
 			case CUSTOMER:
-				CustomerController customerController = new CustomerController(
-						new CustomerServices(new CustomerDaoMysql()));
+				CustomerController customerController = new CustomerController(new CustomerServices(new CustomerDaoMysql()));
 				LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
 				Action.printActions();
 				Action action = Action.getAction();

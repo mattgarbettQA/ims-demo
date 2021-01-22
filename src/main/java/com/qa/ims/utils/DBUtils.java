@@ -27,7 +27,7 @@ public class DBUtils {
 		this.DB_URL = url;
 
 		try (Connection connection = this.getConnection();
-				BufferedReader br = new BufferedReader(new FileReader("src/\" + (test ? \"test\" : \"main\") + \"main/resources/sql-schema.sql"));) {
+				BufferedReader br = new BufferedReader(new FileReader("src/" + (test ? "test" : "main") + "/resources/sql-schema.sql"));) {
 			String string;
 			while ((string = br.readLine()) != null) {
 				try (Statement statement = connection.createStatement();) {

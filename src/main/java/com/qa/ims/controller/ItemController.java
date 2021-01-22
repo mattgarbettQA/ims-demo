@@ -61,7 +61,7 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Please enter a price");
 		Double price = Double.valueOf(getInput());
 		Item item = itemService.update(new Item(id, itemName, price));
-		LOGGER.info("Customer Updated");
+		LOGGER.info("Item Updated");
 		return item;
 	}
 

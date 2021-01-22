@@ -62,7 +62,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item readItem(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id= " + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY item_id = " + id);) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -78,11 +78,11 @@ public class ItemDaoMysql implements Dao<Item> {
 	 * @param item - takes in a item object. id will be ignored
 	 */
 	@Override
-	public Item create(Item i) {
+	public Item create(Item t) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("INSERT INTO items(item_name, price) values('" + i.getItemName()
-					+ "','" + i.getPrice() + "')");
+			statement.executeUpdate("INSERT INTO items(item_name, price) values('" + t.getItemName()
+					+ "','" + t.getPrice() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -99,12 +99,12 @@ public class ItemDaoMysql implements Dao<Item> {
 	 * @return
 	 */
 	@Override
-	public Item update(Item i) {
+	public Item update(Item t) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update items set item_name ='" + i.getItemName() + "', price ='"
-					+ i.getPrice() + "' where item_id =" + i.getId());
-			return readItem(i.getId());
+			statement.executeUpdate("update items set item_name ='" + t.getItemName() + "', price ='"
+					+ t.getPrice() + "' where item_id =" + t.getId());
+			return readItem(t.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

@@ -71,7 +71,7 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("Please enter the date");
 		String date = getInput();
 		Order order = orderService.create(new Order(customer_id, items, date).quantitems(quantitems));
-		LOGGER.info("Order created");
+		LOGGER.info("-Order created-");
 		return order;
 	}
 

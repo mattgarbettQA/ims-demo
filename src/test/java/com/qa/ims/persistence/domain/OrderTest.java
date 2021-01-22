@@ -24,11 +24,11 @@ public class OrderTest {
 
 	@Before
 	public void setUp() {
-		order = new Order(1L, 1L, 1L, 20, "October");
-		otherOrder = new Order(1L, 1L, 1L, 20, "October");
+		order = new Order(1L, 1L, 1L, 10, "January");
+		otherOrder = new Order(1L, 1L, 1L, 10, "January");
 		emptyOrder = new Order();
 
-		orderWithPrice = new Order(5L, 1L, 1L, 20, "October").total_price(15.99);
+		orderWithPrice = new Order(4L, 1L, 1L, 10, "January").total_price(9.99);
 		List<Long> items_id = new ArrayList<>();
 		List<Integer> quantitems = new ArrayList<>();
 		List<Long> items_id_delete = new ArrayList<>();
@@ -37,8 +37,7 @@ public class OrderTest {
 		items_id_delete.add(1L);
 		orderWithID = new Order(1L, 1L, items_id, "October");
 		orderNoID = new Order(1L, items_id, "October");
-		orderBuilder = new Order().quantitems(quantitems).items_id_delete(items_id_delete).updateAddItems(true)
-				.updateDeleteItems(true);
+		orderBuilder = new Order().quantitems(quantitems).items_id_delete(items_id_delete).updateAddItems(true).updateDeleteItems(true);
 	}
 
 	@Test
@@ -132,7 +131,7 @@ public class OrderTest {
 
 	@Test
 	public void toStringTest() {
-		String toString = "Order [order_id= 5, customer_id= 1, item_id= 1, quantity= 20, order_date= October, total price= £15.99]";
+		String toString = "Order [order_id= 4, customer_id= 1, item_id= 1, quantity= 10, date_ordered= January, total price= £9.99]";
 		assertEquals(toString, orderWithPrice.toString());
 	}
 

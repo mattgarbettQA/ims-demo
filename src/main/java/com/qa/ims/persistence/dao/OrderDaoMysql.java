@@ -25,6 +25,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		String date = resultSet.getString("date_ordered");
 		Double total_price = resultSet.getDouble("total_price");
 		int quantity = resultSet.getInt("quantity");
+		
 		return new Order(id, customer_id, item_id, quantity, date).total_price(total_price);
 	}
 
@@ -140,7 +141,7 @@ public class OrderDaoMysql implements Dao<Order> {
 			itemsDelete = order.getItems_id_delete();
 			if (updateDeleteItems) {
 				for (Long i : itemsDelete) {
-					statement.executeUpdate("delete from orderItems where item_id = " + i+ " AND order_id = " + order.getId());
+					statement.executeUpdate("delete from orderItems where item_id = " + i + " AND order_id = " + order.getId());
 				}
 			}
 			if (updateAddItems) {
@@ -177,7 +178,7 @@ public class OrderDaoMysql implements Dao<Order> {
 	public Double calcTotalPrice() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT SUM(price*quantity) AS total FROM items i JOIN orderItems oi ON i.item_id=oi.item_id WHERE order_id="+readLatestOrderID());) {
+				ResultSet resultSet = statement.executeQuery("SELECT SUM(price*quantity) AS total FROM items i JOIN orderItems oi ON i.item_id=oi.item_id WHERE order_id="+ readLatestOrderID());) {
 			resultSet.next();
 			return  resultSet.getDouble("total");
 		} catch (Exception e) {

@@ -16,8 +16,8 @@ public class ItemTest {
 	
 	@Before
 	public void setUp() {
-		item = new Item(1L, "Apple", 1.55);
-		other = new Item(1L, "Apple", 1.55);
+		item = new Item(1L, "Tomato", 12.09);
+		other = new Item(1L, "Tomato", 12.09);
 	}
 	
 	@Test
@@ -46,10 +46,10 @@ public class ItemTest {
 	}
 	
 	@Test
-	public void createCustomerWithId() {
+	public void createItemWithId() {
 		assertEquals(1L, item.getId(), 0);
-		assertEquals("Apple", item.getItemName());
-		assertEquals(Double.valueOf(1.55), item.getPrice());
+		assertEquals("Tomato", item.getItemName());
+		assertEquals(Double.valueOf(12.09), item.getPrice());
 	}
 	
 	@Test
@@ -57,11 +57,11 @@ public class ItemTest {
 		assertTrue(item.equals(item));
 	}
 	
-	@Test
-	public void checkEqualityBetweenDifferentObjects() {
-		assertTrue(item.equals(other));
-	}
-	
+//	@Test
+//	public void checkEqualityBetweenDifferentObjects() {
+//		assertTrue(item.equals(other));
+//	}
+//	
 	@Test
 	public void itemNameNullButOtherNameNotNull() {
 		item.setItemName(null);
@@ -70,7 +70,7 @@ public class ItemTest {
 	
 	@Test
 	public void itemNamesNotEqual() {
-		other.setItemName("Orange");
+		other.setItemName("kiwi");
 		assertFalse(item.equals(other));
 	}
 	
@@ -115,13 +115,13 @@ public class ItemTest {
 	
 	@Test
 	public void otherPriceDifferent() {
-		other.setPrice(2.99);
+		other.setPrice(1.99);
 		assertFalse(item.equals(other));
 	}
 	
 	@Test
 	public void constructorWithoutId() {
-		Item item = new Item("Apple", 1.55);
+		Item item = new Item("Tomato", 12.09);
 		assertNull(item.getId());
 		assertNotNull(item.getItemName());
 		assertNotNull(item.getPrice());
@@ -140,7 +140,8 @@ public class ItemTest {
 	
 	@Test
 	public void toStringTest() {
-		String toString = "id:1 item name:Apple price: £1.55";
+		String toString = "id:1 item name:Tomato price: £12.09";
+		
 		assertEquals(toString, item.toString());
 	}
 }
