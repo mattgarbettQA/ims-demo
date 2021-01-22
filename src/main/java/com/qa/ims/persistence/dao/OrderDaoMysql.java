@@ -17,28 +17,15 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
-	public Order modelOrderIDFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("order_id");
-		return new Order(id);
-	}
-
-//	public Order modelOrderFromResultSet(ResultSet resultSet) throws SQLException {
-//		Long id = resultSet.getLong("order_id");
-//		Long customer_id = resultSet.getLong("customer_id");
-//		String date = resultSet.getString("order_date");
-//		return new Order(id, customer_id, date);
-//	}
-
 	@Override
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("order_id");
-		Long orderitems_id = resultSet.getLong("orderitems_id");
 		Long customer_id = resultSet.getLong("customer_id");
 		Long item_id = resultSet.getLong("item_id");
 		String date = resultSet.getString("date_ordered");
 		Double total_price = resultSet.getDouble("total_price");
 		int quantity = resultSet.getInt("quantity");
-		return new Order(id, orderitems_id, customer_id, item_id, date).total_price(total_price).quantity(quantity);
+		return new Order(id, customer_id, item_id, quantity, date).total_price(total_price);
 	}
 
 	/**
@@ -152,9 +139,8 @@ public class OrderDaoMysql implements Dao<Order> {
 			List<Long> itemsDelete = new ArrayList<Long>();
 			itemsDelete = order.getItems_id_delete();
 			if (updateDeleteItems) {
-				//int j = 0;
 				for (Long i : itemsDelete) {
-					statement.executeUpdate("delete from orderItems where item_id = " + i);
+					statement.executeUpdate("delete from orderItems where item_id = " + i+ " AND order_id = " + order.getId());
 				}
 			}
 			if (updateAddItems) {
