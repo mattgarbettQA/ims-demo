@@ -3,32 +3,18 @@ package com.qa.ims.persistence.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import com.qa.ims.IMS;
-import com.qa.ims.controller.CustomerController;
 import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.utils.DBUtils;
 //import com.qa.ims.persistence.dao.CustomerDaoMysql;
 
 public class CustomerDaoMysqlTest {
 
-	private static final Logger LOGGER = LogManager.getLogger();
 	private static final String DB_USER = "root";
 	private static final String DB_PASS = "root";
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/ims_test";
@@ -55,19 +41,19 @@ public class CustomerDaoMysqlTest {
 	public void readAllTest() {
 		CustomerDaoMysql customerDAO = new CustomerDaoMysql();
 		List<Customer> customers = new ArrayList<>();
-		customers.add(new Customer(1L,"Oli", "G"));
-		customers.add(new Customer(2L, "Alex", "S"));
-		customers.add(new Customer(3L, "Ben", "A"));
-		customerDAO.create(new Customer("Oli", "G"));
-		customerDAO.create(new Customer("Alex", "S"));
-		customerDAO.create(new Customer("Ben", "A"));
+		customers.add(new Customer(1L,"Chris", "P"));
+		customers.add(new Customer(2L, "Rhys", "T"));
+		customers.add(new Customer(3L, "Nic", "J"));
+		customerDAO.create(new Customer("Chris", "P"));
+		customerDAO.create(new Customer("Rhys", "T"));
+		customerDAO.create(new Customer("Nic", "J"));
 		assertEquals(customers, customerDAO.readAll());
 	}
 	
 	@Test
 	public void updateTest() {
 		CustomerDaoMysql customerDAO = new CustomerDaoMysql();
-		Customer customer = new Customer("Alex", "S");
+		Customer customer = new Customer("Chris", "P");
 		Customer newCustomer = new Customer(1L, "Ben", "Allen");
 		customerDAO.create(customer);
 		assertEquals(newCustomer, customerDAO.update(newCustomer));
