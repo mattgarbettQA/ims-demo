@@ -1,0 +1,27 @@
+20210122 12:12:31 INFO  [main] controller.OrderController OrderController.java38 - Order [order_id= null, customer_id= 1, item_id= null, quantity= null, date_ordered= January, total price= £null]
+20210122 12:12:31 INFO  [main] controller.OrderController OrderController.java38 - Order [order_id= null, customer_id= 2, item_id= null, quantity= null, date_ordered= February, total price= £null]
+20210122 12:12:31 INFO  [main] controller.OrderController OrderController.java38 - Order [order_id= null, customer_id= 3, item_id= null, quantity= null, date_ordered= March, total price= £null]
+20210122 12:12:31 INFO  [main] controller.OrderController OrderController.java136 - Please enter the id of the order you would like to delete
+20210122 12:12:31 INFO  [main] controller.OrderController OrderController.java139 - Order Deleted
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java33 - id:null item name:Tomato price: £12.0
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java33 - id:null item name:Potato price: £12.0
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java33 - id:null item name:Apple price: £1.99
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java57 - Please enter the id of the item you would like to update
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java59 - Please enter an item name
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java61 - Please enter a price
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java64 - Item Updated
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java43 - Please enter the item name
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java45 - Please enter the price
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java48 - Item created
+20210122 12:12:32 INFO  [main] controller.ItemController ItemController.java73 - Please enter the id of the item you would like to delete
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java37 - id:null first name:Chris surname:P
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java37 - id:null first name:Rhys surname:T
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java37 - id:null first name:Nic surname:J
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java61 - Please enter the id of the customer you would like to update
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java63 - Please enter a first name
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java65 - Please enter a surname
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java68 - Customer Updated
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java47 - Please enter a first name
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java49 - Please enter a surname
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java52 - Customer created
+20210122 12:12:32 INFO  [main] controller.CustomerController CustomerController.java77 - Please enter the id of the customer you would like to delete

@@ -1,7 +1,9 @@
 .settings/
-target/
-bin/
 .classpath
 .project
-*.log
+log-file.log
+.uml
+.umlcd
+/bin/
 
+/target/

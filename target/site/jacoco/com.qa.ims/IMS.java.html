@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IMS.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">matt-ims</a> &gt; <a href="index.source.html" class="el_package">com.qa.ims</a> &gt; <span class="el_source">IMS.java</span></div><h1>IMS.java</h1><pre class="source lang-java linenums">package com.qa.ims;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.qa.ims.controller.Action;
+import com.qa.ims.controller.CrudController;
+import com.qa.ims.controller.CustomerController;
+import com.qa.ims.controller.ItemController;
+import com.qa.ims.controller.OrderController;
+import com.qa.ims.persistence.dao.CustomerDaoMysql;
+import com.qa.ims.persistence.dao.ItemDaoMysql;
+import com.qa.ims.persistence.dao.OrderDaoMysql;
+import com.qa.ims.persistence.domain.Domain;
+import com.qa.ims.services.CustomerServices;
+import com.qa.ims.services.ItemServices;
+import com.qa.ims.services.OrderServices;
+import com.qa.ims.utils.DBUtils;
+import com.qa.ims.utils.Utils;
+
+<span class="nc" id="L21">public class IMS {</span>
+
+<span class="nc" id="L23">	public static final Logger LOGGER = LogManager.getLogger();</span>
+
+	public void imsSystem() {
+<span class="nc" id="L26">		LOGGER.info(&quot;What is your username&quot;);</span>
+<span class="nc" id="L27">		String username = Utils.getInstance().getInput();</span>
+<span class="nc" id="L28">		LOGGER.info(&quot;What is your password&quot;);</span>
+<span class="nc" id="L29">		String password = Utils.getInstance().getInput();</span>
+
+<span class="nc" id="L31">		DBUtils.getInstance(username, password, &quot;jdbc:mysql://localhost:3306/ims&quot;, false); //this one for connecting to local </span>
+		//DBUtils.getInstance(username, password, &quot;jdbc:mysql://MYGCP3306/ims&quot;, false); // for connecting to GCP
+<span class="nc" id="L33">		boolean stop = false;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">		while (!stop) {</span>
+<span class="nc" id="L35">			LOGGER.info(&quot;Which entity would you like to use?&quot;);</span>
+<span class="nc" id="L36">			Domain.printDomains();</span>
+
+<span class="nc" id="L38">			Domain domain = Domain.getDomain();</span>
+
+<span class="nc bnc" id="L40" title="All 5 branches missed.">			switch (domain) {</span>
+			case CUSTOMER:
+<span class="nc" id="L42">				CustomerController customerController = new CustomerController(new CustomerServices(new CustomerDaoMysql()));</span>
+<span class="nc" id="L43">				LOGGER.info(&quot;What would you like to do with &quot; + domain.name().toLowerCase() + &quot;:&quot;);</span>
+<span class="nc" id="L44">				Action.printActions();</span>
+<span class="nc" id="L45">				Action action = Action.getAction();</span>
+<span class="nc" id="L46">				doAction(customerController, action);</span>
+<span class="nc" id="L47">				break;</span>
+			case ITEM:
+<span class="nc" id="L49">				ItemController itemController = new ItemController(new ItemServices(new ItemDaoMysql()));</span>
+<span class="nc" id="L50">				LOGGER.info(&quot;What would you like to do with &quot; + domain.name().toLowerCase() + &quot;:&quot;);</span>
+<span class="nc" id="L51">				Action.printActions();</span>
+<span class="nc" id="L52">				action = Action.getAction();</span>
+<span class="nc" id="L53">				doAction(itemController, action);</span>
+<span class="nc" id="L54">				break;</span>
+			case ORDER:
+<span class="nc" id="L56">				OrderController orderController = new OrderController(new OrderServices(new OrderDaoMysql()));</span>
+<span class="nc" id="L57">				LOGGER.info(&quot;What would you like to do with &quot; + domain.name().toLowerCase() + &quot;:&quot;);</span>
+<span class="nc" id="L58">				Action.printActions();</span>
+<span class="nc" id="L59">				action = Action.getAction();</span>
+<span class="nc" id="L60">				doAction(orderController, action);</span>
+<span class="nc" id="L61">				break;</span>
+			case STOP:
+<span class="nc" id="L63">				stop = true;</span>
+<span class="nc" id="L64">				break;</span>
+			default:
+				break;
+			}
+<span class="nc" id="L68">		}</span>
+<span class="nc" id="L69">		LOGGER.info(&quot;SO LONG!&quot;);</span>
+<span class="nc" id="L70">	}</span>
+
+	public void doAction(CrudController&lt;?&gt; crudController, Action action) {
+<span class="nc bnc" id="L73" title="All 6 branches missed.">		switch (action) {</span>
+		case CREATE:
+<span class="nc" id="L75">			crudController.create();</span>
+<span class="nc" id="L76">			break;</span>
+		case READ:
+<span class="nc" id="L78">			crudController.readAll();</span>
+<span class="nc" id="L79">			break;</span>
+		case UPDATE:
+<span class="nc" id="L81">			crudController.update();</span>
+<span class="nc" id="L82">			break;</span>
+		case DELETE:
+<span class="nc" id="L84">			crudController.delete();</span>
+<span class="nc" id="L85">			break;</span>
+		case RETURN:
+<span class="nc" id="L87">			break;</span>
+		default:
+			break;
+		}
+<span class="nc" id="L91">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
